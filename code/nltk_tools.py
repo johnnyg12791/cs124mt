@@ -1,22 +1,14 @@
 import pickle
+import string
 import os
 import nltk
 
 '''
 A wrapper class provided useful implementations of several NLTK tools.
 
-# Example Input:
-from nltk_tools import NltkTools
-sentence = "Hola, tengo dos perros."
-nltk_tools = NltkTools()
-for word in sentence.split():
-  print nltk_tools.stem_spanish_word(word)
-
-# Example Output:
-hola,
-teng
-dos
-perros.
+Current tools include:
+- Spanish-language word stemmer
+- Spanish-language unigram/bigram POS tagger
 
 '''
 class NltkTools:
@@ -55,14 +47,26 @@ class NltkTools:
   def stem_spanish_word(self, word):
     return self.spanish_stemmer.stem(word)
     
-  def unigram_tag(self, sentence):
+  # Given a sentence to translate, this returns the POS
+  # for each word based on a unigram language model
+  def spanish_unigram_tag(self, sentence):
     sentence = sentence.split()
     return self.unigram_tagger.tag(sentence)
     
-  def bigram_tag(self, sentence):
+  # Given a sentence to translate, this returns the POS
+  # for each word based on a unigram language model
+  def spanish_bigram_tag(self, sentence):
     sentence = sentence.split()
     return self.bigram_tagger.tag(sentence)
-   
+  
+  def normalize_word(self, word):
+    exclude = set(string.punctuation)
+    word = ''.join(ch for ch in word if ch not in exclude)
+    return word
+    
+  def split_and_normalize_sentence(self, sentence):
+    return [self.normalize_word(word) for word in nltk.word_tokenize(sentence)]
+  
   # Returns the part of speech associated with the input word 
   # def find_spanish_pos(self, word):
     # return nltk.pos_tag(word)
@@ -70,15 +74,17 @@ class NltkTools:
 
 # TEST CODE - Please feel free to ignore this for the moment.
 
-# test_sentence = "Hola, me llamo Harley y tengo dos perros."
-# test_translation = "Hello, my name is Harley and I have two dogs."
 # test_dictionary = {"tener":["to have", "to be"], 
 #                    "hola":["hello"], 
 #                    "perro":["dog", "bitch"],
 #                    "llamarse":["to be called", "to call on oneself"],
 #                    "y":["and"],
 #                    "dos":["two"]}
+
+# test_sentence = "Hola, me llamo Harley y tengo dos perros."
+# test_translation = "Hello, my name is Harley and I have two dogs."
                    
 # nltk_tools = NltkTools()
+# print nltk_tools.split_and_normalize_sentence(test_sentence)
 
 # print nltk_tools.unigram_tag(test_sentence)
