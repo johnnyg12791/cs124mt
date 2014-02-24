@@ -1,3 +1,3 @@
-cs124mt
+CS124 - Machine Translation
 =======
-From Spanish to English
+A simple direct translation program from Spanish to English
