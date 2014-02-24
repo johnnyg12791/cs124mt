@@ -3,7 +3,7 @@ from nltk_tools import NltkTools
 
 def main():
   stemmer = NltkTools()
-  filename = "../corpus/dict_unaccented.txt"
+  filename = "../corpus/dict.txt"
   print create_dictionary(filename, stemmer)
 
 #given a file of the form:
@@ -19,7 +19,7 @@ def create_dictionary(filename, stemmer):
       translation_list = []
       for translation in split[1].split(','):
         translation_list.append(translation.strip())
-      dictionary[stemmer.stem_word(split[0])] = translation_list
+      dictionary[stemmer.stem_word(split[0].decode('quopri').decode('utf-8'))] = translation_list
   return dictionary
 
 
