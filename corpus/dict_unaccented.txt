@@ -20,12 +20,12 @@ Ateneo: Athenaeum
 atentado: assualt
 autoridades: authorities
 Avella: Avella
-año: year
+ano: year
 Bagdad: Bagdad
 banda: band, side, strip, gang
 Barcelona: Barcelona
 Blanco: white, target, blank
-Bolívar: Bolívar
+Bolivar: Bolivar
 brasileno: Brazilian
 buen: good
 cabestro: halter
@@ -63,7 +63,7 @@ Congreso: congress
 contra: against, to
 Cotiza: listed
 cual: which, that, such as
-aártel: cartel, poster, sign
+aartel: cartel, poster, sign
 daba: was
 dar: to give, to provide, to deal
 de: of, from, by, with, at, about, out, off, than
@@ -122,7 +122,7 @@ Globovision: Globovision
 Gobierno: Government
 gritos: shouts, cries, screams
 Gustavo: Gustavo
-Guzmán: Guzmán
+Guzman: Guzman
 ha: ah
 haber: to have
 hacer: to do, to make
@@ -195,7 +195,7 @@ mundo: world
 mas: more, most, other, plus, else
 Mexico: Mexico
 nadie: no one, nobody, anyone, anybody, none
-narcotráfico: drug
+narcotrafico: drug
 Neymar: Neymar
 Nicolas: Nicholas
 ningun: no
