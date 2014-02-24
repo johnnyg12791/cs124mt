@@ -1,8 +1,16 @@
-def main():
-  filename = "../corpus/dict.txt"
-  print create_dictionary(filename)
+from nltk_tools import NltkTools
 
-def create_dictionary(filename):
+
+def main():
+  stemmer = NltkTools()
+  filename = "../corpus/dict_unaccented.txt"
+  print create_dictionary(filename, stemmer)
+
+#given a file of the form:
+#spanish_word: englishWord1, englishWord2...
+#spanish_word: englishWord1, englishWord2, englishWord3...
+#returns a dictionary {spanWord -> [engW, engW], spanWord -> [engW, engW,...]}
+def create_dictionary(filename, stemmer):
   dictionary = {}
   with open(filename) as f:
     content = f.readlines()
@@ -11,7 +19,7 @@ def create_dictionary(filename):
       translation_list = []
       for translation in split[1].split(','):
         translation_list.append(translation.strip())
-      dictionary[split[0]] = translation_list
+      dictionary[stemmer.stem_word(split[0])] = translation_list
   return dictionary
 
 
