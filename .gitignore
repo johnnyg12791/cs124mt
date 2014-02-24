@@ -3,6 +3,9 @@
 # C extensions
 *.so
 
+# Added by John
+*.gz
+
 # Packages
 *.egg
 *.egg-info

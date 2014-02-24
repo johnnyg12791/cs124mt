@@ -18,8 +18,8 @@ def create_dictionary(filename, stemmer):
       split = line.split(":")
       translation_list = []
       for translation in split[1].split(','):
-        translation_list.append(stemmer.stem_word(translation.strip()))
-      dictionary[split[0]] = translation_list
+        translation_list.append(translation.strip())
+      dictionary[stemmer.stem_word(split[0])] = translation_list
   return dictionary
 
 

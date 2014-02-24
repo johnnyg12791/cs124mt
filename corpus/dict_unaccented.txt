@@ -67,7 +67,7 @@ aartel: cartel, poster, sign
 daba: was
 dar: to give, to provide, to deal
 de: of, from, by, with, at, about, out, off, than
-decidir: to decide, to choose, to make up one’s mind, to conclude
+decidir: to decide, to choose, to make up one's mind, to conclude
 defraudar: to defraud, to let down, to decieve, to betray
 dejar: to leave, to put, to give up, to abandon 
 del: of the
@@ -163,7 +163,7 @@ largo: long, length
 las: the
 le: you, him, her, it
 legal: legal
-llegar: to get, to reach, to arrive, to come, 
+llegar: to get, to reach, to arrive, to come
 lo: it, the
 los: the, them
 Lozano: Lush, Lusty
