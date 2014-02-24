@@ -23,10 +23,11 @@ class NltkTools:
 
   def __init__(self):
     # Set relative NLTK data path for corpora parsing
-    nltk.data.path.append('../corpus')
+    cur_dir = os.path.dirname(os.path.abspath(__file__))
+    nltk.data.path.append(cur_dir + '/../corpus')
     self.spanish_stemmer = nltk.SnowballStemmer("spanish")
-    self.unigram_tagger = self.load_tagger('../corpus/taggers/unigram.pickle', 'unigram')
-    self.bigram_tagger = self.load_tagger('../corpus/taggers/bigram.pickle', 'bigram')
+    self.unigram_tagger = self.load_tagger(cur_dir + '/../corpus/taggers/unigram.pickle', 'unigram')
+    self.bigram_tagger = self.load_tagger(cur_dir + '/../corpus/taggers/bigram.pickle', 'bigram')
    
   # Generate unigram and bigram word taggers, reading from 
   # pickled files if they already exist       
@@ -42,9 +43,9 @@ class NltkTools:
       if ngram == 'unigram':
         tagger = nltk.UnigramTagger(cess_sents)
       if ngram == 'bigram':
-        train_threshold = int(len(cess_sents)*90/100)
+        train_threshold = int(len(cess_sents)*0.9)
         tagger = nltk.BigramTagger(cess_sents[:train_threshold])
-        tagger.evaluate(cess_sents[train_threshold+1:])
+        tagger.evaluate(cess_sents[train_threshold:])
       pickle.dump(tagger, tagger_file, -1)
       tagger_file.close()
     return tagger
@@ -56,7 +57,11 @@ class NltkTools:
     
   def unigram_tag(self, sentence):
     sentence = sentence.split()
-    return self.unigram_tagger.tag(test_sentence.split())
+    return self.unigram_tagger.tag(sentence)
+    
+  def bigram_tag(self, sentence):
+    sentence = sentence.split()
+    return self.bigram_tagger.tag(sentence)
    
   # Returns the part of speech associated with the input word 
   # def find_spanish_pos(self, word):
