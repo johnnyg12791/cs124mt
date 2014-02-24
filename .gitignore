@@ -5,7 +5,7 @@
 
 # Added by John
 *.gz
-.DS_Store
+*.DS_Store
 
 # Packages
 *.egg
