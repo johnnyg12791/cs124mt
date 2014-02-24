@@ -1,240 +1,225 @@
-El
-a
-abriendo
-acusaciones
-ahora
-Aida
-al
-algunos
-anotó
-anteriores
-apoyar
-Arauca
-armas
-asegura
-asesores
-atacada
-ataque
-autoridades
-Avella
-años
-Blanco
-Bolívar
-cabestro
-caminantes
-candidatos
-capítulo
-caravana
-Carlos
-Central
-Chapo
-chavista
-clase
-clave
-comienza
-complicado
-con
-condiciones
-condición
-Congreso
-cuál
-Cártel
-daba
-de
-decidir
-dejen
-del
-demostrando
-departamento
-desató
-desconoce
-desconocidos
-desde
-Desde
-despavorido
-despertado
-Después
-dio
-directos
-doce
-don
-Don
-días
-efeto
-El
-el
-elecciones
-ello
-ellos
-en
-En
-encabeza
-encabezado
-enfrente
-enjuicia
-es
-escoltas
-ese
-espalda
-estaban
-estado
-este
-Estudiantes
-estudiantiles
-está
-están
-evadir
-exigen
-Federación
-fue
-fuera
-fueron
-gama
-Gobierno
-gritos
-Gustavo
-Guzmán
-ha
-había
-hace
-Hasta
-hecho
-hicieron
-hora
-imaginando
-impactaron
-importantes
-insatisfacción
-invitando
-jefe
-Joaquín
-Juan
-jurídico
-kilómetros
-la
-La
-largas
-largo
-las
-le
-llegándose
-lo
-los
-Lozano
-luego
-lugar
-líder
-Maduro
-marchas
-Maritornes
-mejor
-mejores
-mesmo
-miles
-militares
-mismas
-momento
-movilizaban
-movimiento
-mucho
-muestren
-mundo
-más
-México
-nadie
-narcotráfico
-Nicolás
-ningún
-no
-número
-organización
-pajar
-para
-paralizado
-participante
-partido
-país
-pelo
-peor
-perpetradores
-personas
-poderosa
-podía
-policía
-política
-por
-preguntaron
-Presidencia
-presidente
-presto
-primero
-probable
-probablemente
-proceso
-prófugo
-próximas
-puertas
-que
-Quijote
-quién
-quiénes
-qué
-reclamado
-recorriendo
-regreso
-rejas
-relacionadas
-República
-Requesens
-respectivamente
-responsable
-rivales
-rozando
-salió
-saques
-se
-sea
-sectores
-Senado
-ser
-señalan
-siete
-sigue
-sin
-Sinaloa
-sostenía
-su
-suelo
-sus
-tales
-tantas
-tarjetón
-tenía
-Tienen
-todavía
-todo
-tradicional
-tras
-tres
-un
-una
-Universidad
-uno
-vehículos
-Venezuela
-venta
-ventero
-ver
-vida
-vidas
-viese
-violencia
-vista
-voces
-votando
-voto
-y
-Y
-ya
-él
-Nadie
+El: the, he
+a: to, at, of, into, by, upon, per
+abriendo: opening, unfold, start, open, break, undo
+acusaciones: accusation, charge, indictment, prosecution, accusal
+ahora: now, presently
+Aida: Aida
+al: to the, at the
+algunos: some, few, a few
+anotó: write down, annotate, jot down, log, book
+anteriores: previous, former, prior, past, front, fore, anterior 
+apoyar: support, sustain, back, rest, uphold, lean, favor, cheer, back up
+Arauca: Arauca
+armas: arms, weapons, armaments, hardware
+asegura: ensure, assure, secure, insure, anchor, assert, faster, fix
+asesores: adviser, consultant, assessor, moderator, counselor
+atacada: attacked
+ataque: attack, onset, assault, raid, strike, seizure
+autoridades: authorities
+Avella: Avella
+año: year
+Blanco: white, target, blank
+Bolívar: Bolívar
+cabestro: halter
+caminantes: walker, hiker, wayfarer, tramp
+candidato: candidate, nominee, applicant, aspirant, hopeful
+capítulo: chapter, episode
+caravana: caravan, trailer, mobile home, camper
+Carlos: Carlos
+Central: central, station, exchange, headquarters
+Chapo: Chapo
+chavista: supporter of Hugo Chavez
+clase: class, grade, kind, sort, lesson, manner, lecture, period, set, tone
+clave: key, code, clef, harpsichord, cipher
+comenzar: to begin, to start
+complicado: complicated, complex, elaborate, knotty, tangled, perplexing
+con: with, by
+condiciones: terms
+condición: condition, stipulation, proviso, state, shape, factor, requirement
+Congreso: congress
+cuál: which, that, such as
+Cártel: cartel, poster, sign
+daba: was
+dar: to give 
+de: of, from, by, with, at, about, out, off, than
+decidir: to decide, to choose, to make up one’s mind, to conclude
+dejar: to leave, to put, to give up, to abandon 
+del: of the
+demonstrar: to demonstrate, to show, to display
+departamento: department, apartment
+desatar: to untie, to undo, to unleash, to loosen
+desconocer: to ignore, to not know
+desconocido: unknown, stranger
+desde: from, since, after, as soon as
+despavorido: terrified
+despertar: to wake up, to arouse, to revive
+después: after, later, next, afterward
+dar: to give, to provide, to deal
+directo: direct, straight
+doce: twelve
+don: Mr., gift
+día: day, daytime
+efecto: effect, aim, purpose, impression, bill
+el: the
+elección: choice, election
+ello: it
+ellos: they
+en: in, into, by, from, in terms of
+encabezar: to lead, to headline, to head, to lead on
+enfrente: opposite, facing
+enjuiciar: to prosecute, to judge, to indict
+escoltar: to escort, to guard, to convoy, to take out
+ese: that
+espalda: back
+estar: to be, to stay, to remain, to stand, to be present
+estado: state, status, condition, statement, government
+este: this, this one, east
+estudiante: student, undergraduate
+evadir: to evade, to dodge, to avoid, to escape
+exigir: to demand, to call for, to require
+Federación: Federation
+fue: he went, she went, he was, she was
+fuera: outside, away
+fueron: they went, they were
+gama: range
+Gobierno: Government
+gritos: shouts, cries, screams
+Gustavo: Gustavo
+Guzmán: Guzmán
+ha: ah
+haber: to have
+hacer: to do, to make
+Hasta: As far as, Up to, Until
+hecho: done, fact
+hora: hour, time
+imaginar: to imagine
+impactaron: to impact
+importante: important
+insatisfacción: dissatisfaction
+invitar: to invite
+jefe: boss, chief, father
+Joaquín: Joaquín
+Juan: Juan
+jurídico: legal
+kilómetro: kilometer
+la: the
+La: The
+larga: long, length
+largo: long, length
+las: the
+le: you, him, her, it
+llegar: to get, to reach, to arrive, to come, 
+lo: it, the
+los: the, them
+Lozano: Lush, Lusty
+luego: then, later, next
+lugar: place, site, spot, point, room
+líder: leader
+Maduro: Mature, Ripe
+marchar: to march, to go, to go away, to walk, to move, to travel
+Maritornes: Maritornes
+mejor: best, better
+mismo: same, very, one
+mil: thousand
+militares: military
+momento: time, moment, minute, point
+movilizar: to mobilize
+movimiento: movement, motion, move
+mucho: much, lot, a lot, a lot of, a great deal, very, plenty, lots of, plenty of
+mostrar: to show, to display, to exhibit
+mundo: world
+más: more, most, other, plus, else
+México: Mexico
+nadie: no one, nobody, anyone, anybody, none
+narcotráfico: drug
+Nicolás: Nicholas
+ningún: no
+no: no, not
+número: number, issue
+organización: organization
+pajar: haystack
+para: for, to, in order to
+paralizado: paralyzed
+participante: competitor
+partido: party, match, game, split
+país: country, land
+pelo: hair, pile, coat, locks, head of hair
+peor: worse, worst, worse off
+perpetradores: perpetrators
+personas: people
+poderosa: powerful, mighty, capable, potent
+podía: could, be able to, can, may
+policía: police, police force, cop, copper, policeman, officer, patrolmen
+política: policy, politics, statecraft
+por: by, for, per, to through, as, at, about, because of, out, down, along around
+preguntar: to ask, to inquire, to question, to question, to ask after, to enquire 
+Presidencia: presidency, presidentship
+presidente: president
+presto: presto
+primero: first, top, early, primary, front, initial
+probable: probably, likely, possibly
+proceso: process, proceedings, trial, prosecution, course, action
+prófugo: fugitivie
+próximas: next, close, near, nearby, coming
+puerta: door, doorway, gate, gateway
+que: what, that, than
+Quijote: Quijote
+quién: who, whoever, whosoever
+qué: what
+reclamado: reclaimed
+recorrer: to travel, to tour, to roam
+regreso: return, comeback, regress
+rejas: grid, grille, grill, grate, screen
+relacionadas: relevant, allied, germane
+República: republic
+Requesens: Requesens
+respectivamente: respectively, severally
+responsable: responsible, liable, answerable, amenable
+rivales: rival, foe, enemy
+rozando: to touch, to rub, to graze, to skim, to grate
+salir: to leave, to go out, to get away, to get out, to come out, to depart, to rise
+sacar: to take, to get, to take out, to bring out, to put out, to extract, to bring up
+se: oneself, self
+sectores: sector, section, neighborhood, quadrant
+Senado: senate
+ser: to be, to come, to play, being, thing
+señalan: mark, show, designate, mark off, signalize
+siete: seven
+sigue: go ahead
+seguir: to follow, to continue, to keep, to pursue, to go on
+sin: without, out of, minus, less, except
+Sinaloa: Sinaloa
+sostener: to sustain, to hold, to support, to hold up, to maintain
+su: its, your, his, their, her
+suelo: soil, ground, land, floor, earth, deck
+sus: their, its, your, his, her
+talar: to cut, to cut down, to fell, to chop
+tantas: such
+tarjetón: cards
+tener: to have, to keep, to bear, to hold, to own, to posses, to wear
+todavía: still, yet, as yet
+todo: all, whole, entire, every, the lot, all of, everything
+tradicional: traditional, conventional, classic, used
+tras: after, behind, beyond
+tres: three
+un: a, an, one
+una: a, an, one
+universidad: university
+uno: one
+vehículos: vehicles
+Venezuela: Venezuela
+venta: sale, sales, disposal, vending, closeout
+ventero: innkeeper
+ver: to see, to view, to watch, to witness
+vida: life, living, lifetime, existence
+verse: to see oneself
+violencia: violence, fury, wildness
+vista: view, perspective, sight, vision
+voz: voice, word, vocals
+votar: to vote, to poll, to go to the polls, to ballot
+voto: vote, vow
+y: and
+ya: already, anymore, by now
+Él: he, it
+él: he, it
+nadie: nobody, no one, none
