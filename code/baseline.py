@@ -3,12 +3,13 @@ import random
 from nltk_tools import NltkTools
 import string
 import re
+import os
 
 def main():
   nltk_tools = NltkTools()
-
-  dictionary_filename = "../corpus/dict.txt"
-  dev_filename = "../corpus/dev_set.txt"
+  corpus_dir = os.path.dirname(os.path.abspath(__file__)) + '/../corpus'
+  dictionary_filename = corpus_dir + "/dict.txt"
+  dev_filename = corpus_dir + "/dev_set.txt"
 
   dictionary = create_dictionary(dictionary_filename, nltk_tools)
   
@@ -43,7 +44,7 @@ def baseline_sentences(nltk, dictionary, sentence):
       word = word[:-1]
       #print word
 
-    stemmed_word = nltk.stem_word(word.decode('quopri').decode('utf-8'))
+    stemmed_word = nltk.stem_spanish_word(word.decode('quopri').decode('utf-8'))
     if stemmed_word not in dictionary:
       result += word + punc
     else:

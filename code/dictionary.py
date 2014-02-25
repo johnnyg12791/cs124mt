@@ -1,9 +1,11 @@
 from nltk_tools import *
+import os
 
 
 def main():
   stemmer = NltkTools()
-  filename = "../corpus/dict.txt"
+  corpus_dir = os.path.dirname(os.path.abspath(__file__)) + '/../corpus'
+  filename = corpus_dir + "/dict.txt"
   print create_dictionary(filename, stemmer)
 
 
@@ -22,7 +24,7 @@ def create_dictionary(filename, stemmer):
       translation_list = []
       for translation in split[1].split(','):
         translation_list.append(translation.strip())
-      dictionary[stemmer.stem_word(split[0].decode('quopri').decode('utf-8'))] = translation_list
+      dictionary[stemmer.stem_spanish_word(split[0].decode('quopri').decode('utf-8'))] = translation_list
   return dictionary
 
 

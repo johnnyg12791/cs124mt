@@ -97,7 +97,7 @@ class NltkTools:
 #                    "y":["and"],
 #                    "dos":["two"]}
 
-# test_sentence = "Hóla, me llamo Harley y tengo dos perros."
+# test_sentence = "Hola, me llamo Harley y tengo dos perros."
 # test_translation = "Hello, my name is Harley and I have two dogs."
                    
 #nltk_tools = NltkTools()
