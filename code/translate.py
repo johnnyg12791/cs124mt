@@ -1,6 +1,7 @@
 import sys
 import os
 import nltk_tools
+from dictionary import *
 
 DEV_SET = os.path.dirname(os.path.abspath(__file__)) + '/../corpus/dev_set.txt'
 TEST_SET = os.path.dirname(os.path.abspath(__file__)) + '/../corpus/test_set.txt'
@@ -8,6 +9,7 @@ DEV_SET_NO_ACCENTS = os.path.dirname(os.path.abspath(__file__)) + '/../corpus/de
 
 def main(args):
   nltk = nltk_tools.NltkTools()
+  dictionary = get_dictionary()
   print "We are translating from Spanish to English."
   with open(DEV_SET) as f:
     content = f.readlines()
@@ -59,19 +61,38 @@ def translate(nltk, sentence):
 
   #need to convert verb endings to infinitive, while remembering conjugation
   #then find english translation, and conjugate it in english
+  for word in words:
+    ing_ending = check_for_ing(word, dictionary)
 
 
+
+#unigram
+def get_most_likely_definition(spanish_word, dictionary):
+  possible_translations = dictionary[spanish_word]
+  for word in possible_translations:
+    #
+    #
+    #
+  return best_word
+
+
+
+
+#return "" if the word isn't -ando, -iendo, english word if it is
+def check_for_ing(word, dictionary):
   #if the word ends in "ando" or "iendo", replace it with "ar" or "ir/er"
-  #for word in sentence:
-    #if word[-4:] == 'ando':
-      #check if word[:-4] + ar in dict
-        #conjugate + add ing
-    #if word[-5:] == 'iendo':
-      #check if word[:-5] + ir in dict
-      #check if word[:-5] + er in dict
-        #conjugate + add ing
-        
-
+  if word[-4:] == 'ando':
+    new_word = word[:-4] + 'ar'
+    definition = get_most_likely_definition(word, dictionary)
+    #check if word[:-4] + ar in dict
+      #conjugate + add ing
+  elif word[-5:] == 'iendo':
+    #check if word[:-5] + ir in dict
+    #check if word[:-5] + er in dict
+      #conjugate + add ing
+  else
+    return ""
+      
 
 
 if __name__ == '__main__':
