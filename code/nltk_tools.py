@@ -1,6 +1,8 @@
 import os
+import collections
 import pickle
 import string
+import math
 import nltk
 
 '''
@@ -9,9 +11,10 @@ A wrapper class provided useful implementations of several NLTK tools.
 Current tools include:
 - Spanish-language word stemmer => stem_spanish_word(word)
 - Spanish-language unigram POS tagger => spanish_unigram_pos_tag(sentence)
-- Spanish-language bigram POS tagger => spanish_bigram_pos_tag(sentence)
-- English-language (not yet implemented)
+- English-language unigram language model => english_unigram_probability(unigram)
+- English-language bigram language model => english_bigram_probability(bigram)
 - Sentence/word normalizer (not yet implemented)
+- Spanish language bigram POS tagger (not yet implemented)
 
 '''
 class NltkTools:
@@ -48,16 +51,28 @@ class NltkTools:
     return tagger
     
   def _load_model(self, filename, ngram):
-    #model = None
-    #if os.path.isfile(filename):
-    #  model_file = open(filename, 'rb')
-    #  model = pickle.load(tagger_file)
-    #  model_file.close()
-    #else:
-    #  model_file = open(filename, 'wb')
-    model = nltk.model.ngram.NgramModel(ngram, nltk.corpus.brown.words())
-    #  pickle.dump(model, model_file, -1)
-    #  model_file.close()
+    model = None
+    if os.path.isfile(filename):
+      model_file = open(filename, 'rb')
+      model = pickle.load(model_file)
+      model_file.close()
+    else:
+      model_file = open(filename, 'wb')
+      model = collections.defaultdict(_dd)
+      model['SIZE'] = len(nltk.corpus.brown.words())
+      if ngram == 1:
+        for word in nltk.corpus.brown.words():
+          model[word.lower()] += 1
+      if ngram == 2:
+        word1 = None
+        for word in nltk.corpus.brown.words():
+          word2 = word
+          if word1:
+            bigram = (word1.lower(), word2.lower())
+            model[bigram] += 1
+          word1 = word2
+      pickle.dump(model, model_file, -1)
+      model_file.close()
     return model
     
   # Returns a stemmed version of the input Spanish word
@@ -70,21 +85,20 @@ class NltkTools:
     sentence = self.split_and_normalize_sentence(sentence)
     return self.es_unigram_tagger.tag(sentence)
     
-  # Given a sentence to translate, this returns the POS
-  # for each word based on a bigram language model
-  def spanish_bigram_pos_tag(self, sentence):
-    sentence = self.split_and_normalize_sentence(sentence)
-    return self.es_bigram_tagger.tag(sentence)
-    
   # Given a unigram, return the probability of that
-  # unigram occuring in the Brown corpus
+  # unigram occuring in the Brown corpus (Laplace)
   def english_unigram_probability(self, unigram):
-    return self.en_unigram_model.logprob(unigram, [])
+    num = self.en_unigram_model[unigram.lower()] + 1.0
+    den = self.en_unigram_model['SIZE'] + len(self.en_unigram_model)
+    return math.log(num/den)
   
-  # Given a bigram, return the probability of that
-  # bigram occuring in the Brown corpus
+  # Given a bigram (in list format), return the probability of
+  # that bigram occuring in the Brown corpus (Laplace smoothed)
   def english_bigram_probability(self, bigram):
-    return self.en_bigram_model.logprob(bigram[0], [bigram[1]])
+    bigram_tuple = (bigram[0].lower(), bigram[1].lower())
+    num = self.en_bigram_model[bigram_tuple]+1.0
+    den = self.en_bigram_model['SIZE'] + len(self.en_bigram_model)
+    return math.log(num/den)
 
   ###############################################################
   # Everything below this line is not yet finished. DO NOT USE! #
@@ -101,9 +115,21 @@ class NltkTools:
       if self.normalize_word(word) != '':
         result.append(self.normalize_word(word))
     return result
+    
+  # Given a sentence to translate, this returns the POS
+  # for each word based on a bigram language model
+  def spanish_bigram_pos_tag(self, sentence):
+    sentence = self.split_and_normalize_sentence(sentence)
+    return self.es_bigram_tagger.tag(sentence)
   
+# A helper function that avoids a lambda function being 
+# pickled in the defaultdict
+def _dd():
+  return 0
 
+########################################################
 ##### TEST CODE - Please feel free to ignore this. #####
+########################################################
 
 # test_dictionary = {"tener":["to have", "to be"], 
 #                    "hola":["hello"], 
@@ -115,7 +141,10 @@ class NltkTools:
 # test_sentence = "Hola, me llamo Harley y tengo dos perros."
 # test_translation = "Hello, my name is Harley and I have two dogs."
                    
-#nltk_tools = NltkTools()
-# print nltk_tools.split_and_normalize_sentence(test_sentence)
-
-# print nltk_tools.spanish_unigram_pos_tag(test_sentence)
+# nltk_tools = NltkTools()
+# test = ['of', 'off']
+# test_bigrams = [['of', 'the'], ['fat', 'cat']]
+# print 'of: ' + str(nltk_tools.english_unigram_probability(test[0]))
+# print 'off: ' + str(nltk_tools.english_unigram_probability(test[1]))
+# print 'of the: ' + str(nltk_tools.english_bigram_probability(test_bigrams[0]))
+# print 'fat cat: ' + str(nltk_tools.english_bigram_probability(test_bigrams[1]))

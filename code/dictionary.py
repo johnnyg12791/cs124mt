@@ -3,11 +3,14 @@ import os
 
 
 def main():
+  dictionary = make_dictionary()
+
+
+def get_dictionary():
   stemmer = NltkTools()
   corpus_dir = os.path.dirname(os.path.abspath(__file__)) + '/../corpus'
   filename = corpus_dir + "/dict.txt"
-  print create_dictionary(filename, stemmer)
-
+  return create_dictionary(filename, stemmer)
 
 '''
 given a file of the form:

@@ -24,7 +24,7 @@ ano: year
 Bagdad: Bagdad
 banda: band, side, strip, gang
 Barcelona: Barcelona
-Blanco: white, target, blank
+blanco: white, target, blank
 Bolivar: Bolivar
 brasileno: Brazilian
 buen: good
@@ -50,7 +50,7 @@ cifrar: to encrypt, to encode, to cypher
 ciudad: city, town
 clase: class, grade, kind, sort, lesson, manner, lecture, period, set, tone
 clausura: closing
-clave: key, code, clef, harpsichord, cipher
+clave: key, code, clef, cipher
 comenzar: to begin, to start
 como: as, like, by way of
 complicado: complicated, complex, elaborate, knotty, tangled, perplexing
@@ -61,7 +61,7 @@ condicion: condition, stipulation, proviso, state, shape, factor, requirement
 confirmar: to confirm, to sustain, to support, to uphold, to prove, to vouch
 Congreso: congress
 contra: against, to
-Cotiza: listed
+cotiza: listed
 cual: which, that, such as
 aartel: cartel, poster, sign
 daba: was
@@ -119,7 +119,7 @@ fueron: they went, they were
 gama: range
 gente: people, folk, town, dweller
 Globovision: Globovision
-Gobierno: Government
+gobierno: government
 gritos: shouts, cries, screams
 Gustavo: Gustavo
 Guzman: Guzman
@@ -157,7 +157,6 @@ juridico: legal
 kilometro: kilometer
 kilometros: kilometers
 la: the
-La: The
 larga: long, length
 largo: long, length
 las: the
@@ -166,12 +165,12 @@ legal: legal
 llegar: to get, to reach, to arrive, to come
 lo: it, the
 los: the, them
-Lozano: Lush, Lusty
+lozano: lush, lusty
 luego: then, later, next
 lugar: place, site, spot, point, room
 lunes: Monday
 lider: leader
-Maduro: Mature, Ripe
+maduro: mature, ripe
 mantequilla: butter
 marchar: to march, to go, to go away, to walk, to move, to travel
 Maritornes: Maritornes
@@ -236,7 +235,7 @@ primero: first, top, early, primary, front, initial
 probable: probably, likely, possibly
 proceso: process, proceedings, trial, prosecution, course, action
 prueba: test, proof, evidence, trial
-profugo: fugitivie
+profugo: fugitive
 proximas: next, close, near, nearby, coming
 puerta: door, doorway, gate, gateway
 pues: since, then, well
@@ -247,9 +246,9 @@ que: what
 reclamado: reclaimed
 recorrer: to travel, to tour, to roam
 regreso: return, comeback, regress
-rejas: grid, grille, grill, grate, screen
+rejas: bars, grid, grille, grill, grate, screen
 relacionadas: relevant, allied, germane
-Republica: republic
+republica: republic
 Requesens: Requesens
 respectivamente: respectively, severally
 responsable: responsible, liable, answerable, amenable
