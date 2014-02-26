@@ -14,9 +14,13 @@ def main(args):
   with open(DEV_SET) as f:
     content = f.readlines()
     for line in content:
+      
       print "Spanish: ", line
+      
       translation = translate(nltk, line)
+      
       print "English: ", translation
+      
       break
 
 
@@ -26,19 +30,23 @@ def translate(nltk, sentence):
   translated_sentence = ["" for i in range(len(words))]
   pos_words = nltk.spanish_unigram_pos_tag(sentence)
   
-  for word_tuple in pos_words:
-    word, pos = word_tuple
-    print word
-    print pos
+  # ["es", "feliz"]
+  # ["he is", "happy"]
+  
   #go word by word
   #tag each POS
+  for word_tuple in pos_words:
+    word, pos = word_tuple
+    if pos == 'V':
+      # "estan => they are"
+      # do conjugation stuff
 
   #go word by word
   #if word is a verb, try to figure out tense and subject(1st, 2nd, 3rd person)
     #choose most likely meaning based on tri/bigram with stupid backoff
     #look at (verb, next_noun)
 
-  #if the word is a noun, check if it is plural or not
+  #if the word is a noun (or None), check if it is plural or not
     #choose most likely based on bigram with stupid backoff to unigram
     #(noun, word)
 
@@ -67,9 +75,12 @@ def translate(nltk, sentence):
 
 
 
-#unigram
+# model definition
+# TONIGHT: implement unigram
+# NEXT: implement stupid backoff from bigram to unigram (if possible)
 def get_most_likely_definition(spanish_word, dictionary):
   pass
+  #lookup all possible translations in dictionary 
   #possible_translations = dictionary[spanish_word]
   #for word in possible_translations:
     
@@ -93,7 +104,7 @@ def check_for_ing(word, dictionary):
       #conjugate + add ing
   #else
     #return ""
-      
+
 # A helper function that avoids a lambda function being 
 # pickled in the defaultdict (used in loading models)
 def _dd():
