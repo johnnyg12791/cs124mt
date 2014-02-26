@@ -63,9 +63,7 @@ def translate(sentence):
 
   return "ENGLISH TRANSLATE" 
 
-
+  
 if __name__ == '__main__':
     args = sys.argv[1:]
     main(args)
-
-
