@@ -41,9 +41,9 @@ def _dd():
   return 0
 
 def main():
-  #stemmer = NltkTools()
   SpanEngDict = SpanEngDictionary()
   print SpanEngDict.dictionary
+  raw_input("")
   print SpanEngDict.unstemmed_dictionary
 
 
