@@ -89,8 +89,7 @@ domingo: sunday, sabbath
 don: Mr., gift
 dia: day, daytime
 efecto: effect, aim, purpose, impression, bill
-el: the
-El: the, he
+el: the, he
 eleccion: choice, election
 ello: it
 ellos: they
