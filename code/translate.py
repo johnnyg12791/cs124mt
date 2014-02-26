@@ -14,7 +14,8 @@ def main(args):
 
 
 def translate(sentence):
-  translated_sentence = ""
+  translated_sentence = ["" for word in sentence.split()]
+
   #go word by word
   #tag each POS
 
@@ -36,19 +37,18 @@ def translate(sentence):
   for word_index in range(len(sentence)-1):
     cur_word = sentence[word_index]
     next_word = sentence[word_index+1]
-    if(cur_word == "es"):
-      if(next_word == "el" or next_word == "la"):
-        translated_sentence += "is the"
-    if(cur_word == "son"):
-      if(next_word == "los" or next_word == "las"):
-        translated_sentence += "are the"
+    if(cur_word == "es" and next_word == "el"):
+      #is the
+
+  #stem changing verbs
+  #if there is a verb that has an 'ue', try replacing it with o
+  #if there is a verb that has an 'ie', try replacing it with just e
+    #check for the new word in the dictionary
 
 
+  #need to convert verb endings to infinitive, while remembering conjugation
+  #then find english translation, and conjugate it in english
 
-  #if the word is 'el'
-    #default to 'the' unless the next word is a verb, then use 'he'
-  for word in sentence:
-    if word == "el":
 
   #if the word ends in "ando" or "iendo", replace it with "ar" or "ir/er"
   for word in sentence:
@@ -59,11 +59,10 @@ def translate(sentence):
       #check if word[:-5] + ir in dict
       #check if word[:-5] + er in dict
         #conjugate + add ing
+        
 
 
-  return "ENGLISH TRANSLATE" 
 
-  
 if __name__ == '__main__':
     args = sys.argv[1:]
     main(args)
