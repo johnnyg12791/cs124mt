@@ -11,7 +11,10 @@ def main():
   dictionary_filename = corpus_dir + "/dict.txt"
   dev_filename = corpus_dir + "/dev_set.txt"
 
-  dictionary = create_dictionary(dictionary_filename, nltk_tools)
+  SpanEngDict = SpanEngDictionary()
+  #print SpanEngDict.unstemmed_dictionary
+  dictionary = SpanEngDict.dictionary
+  #dictionary = create_dictionary(dictionary_filename, nltk_tools)
   
   #for key in dictionary:
   #  print key
@@ -55,6 +58,11 @@ def baseline_sentences(nltk, dictionary, sentence):
 
   return result
 
+
+# A helper function that avoids a lambda function being 
+# pickled in the defaultdict (used in loading models)
+def _dd():
+  return 0
 
 if __name__ == '__main__':
   main()

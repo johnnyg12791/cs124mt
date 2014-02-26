@@ -9,7 +9,9 @@ DEV_SET_NO_ACCENTS = os.path.dirname(os.path.abspath(__file__)) + '/../corpus/de
 
 def main(args):
   nltk = nltk_tools.NltkTools()
-  dictionary = get_dictionary()
+  SpanEngDict = SpanEngDictionary()
+  #print SpanEngDict.unstemmed_dictionary
+  dictionary = SpanEngDict.dictionary
   print "We are translating from Spanish to English."
   with open(DEV_SET) as f:
     content = f.readlines()
@@ -100,7 +102,7 @@ def get_most_likely_definition(nltk, spanish_word, dictionary):
     
   #return best_word
 
-
+#def get_
 
 
 #return "" if the word isn't -ando, -iendo, english word if it is
