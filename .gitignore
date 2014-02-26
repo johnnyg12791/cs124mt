@@ -3,6 +3,10 @@
 # C extensions
 *.so
 
+# Added by John
+*.gz
+*.DS_Store
+
 # Packages
 *.egg
 *.egg-info
