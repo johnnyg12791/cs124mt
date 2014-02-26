@@ -22,6 +22,7 @@ def main():
       #line2 = line.replace("\'", "")
       #print line2
       print baseline_sentences(nltk_tools, dictionary, line)
+      #print nltk_tools.spanish_unigram_pos_tag(line)
 
 def baseline_sentences(nltk, dictionary, sentence):
   #exclude = set(string.punctuation)
