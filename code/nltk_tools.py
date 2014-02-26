@@ -1,6 +1,8 @@
 import os
+import collections
 import pickle
 import string
+import math
 import nltk
 
 '''
@@ -48,16 +50,21 @@ class NltkTools:
     return tagger
     
   def _load_model(self, filename, ngram):
-    #model = None
-    #if os.path.isfile(filename):
-    #  model_file = open(filename, 'rb')
-    #  model = pickle.load(tagger_file)
-    #  model_file.close()
-    #else:
-    #  model_file = open(filename, 'wb')
-    model = nltk.model.ngram.NgramModel(ngram, nltk.corpus.brown.words())
-    #  pickle.dump(model, model_file, -1)
-    #  model_file.close()
+    model = None
+    if os.path.isfile(filename):
+      model_file = open(filename, 'rb')
+      model = pickle.load(model_file)
+      model_file.close()
+    else:
+      if ngram == 1:
+        model_file = open(filename, 'wb')
+        model = collections.defaultdict(_dd)
+        for word in nltk.corpus.brown.words():
+          model[word.lower()] += 1
+        pickle.dump(model, model_file, -1)
+        model_file.close()
+      #else: 
+        #model = nltk.model.ngram.NgramModel(ngram, nltk.corpus.brown.words())
     return model
     
   # Returns a stemmed version of the input Spanish word
@@ -79,7 +86,7 @@ class NltkTools:
   # Given a unigram, return the probability of that
   # unigram occuring in the Brown corpus
   def english_unigram_probability(self, unigram):
-    return self.en_unigram_model.logprob(unigram, [])
+    return math.log(float(self.en_unigram_model[unigram.lower()])/len(nltk.corpus.brown.words()))
   
   # Given a bigram, return the probability of that
   # bigram occuring in the Brown corpus
@@ -102,6 +109,10 @@ class NltkTools:
         result.append(self.normalize_word(word))
     return result
   
+# A helper function that avoids a lambda function being 
+# pickled in the defaultdict
+def _dd():
+  return 0
 
 ##### TEST CODE - Please feel free to ignore this. #####
 
@@ -115,7 +126,7 @@ class NltkTools:
 # test_sentence = "Hola, me llamo Harley y tengo dos perros."
 # test_translation = "Hello, my name is Harley and I have two dogs."
                    
-#nltk_tools = NltkTools()
-# print nltk_tools.split_and_normalize_sentence(test_sentence)
-
-# print nltk_tools.spanish_unigram_pos_tag(test_sentence)
+nltk_tools = NltkTools()
+test = ['of', 'off']
+print 'of: ' + str(nltk_tools.english_unigram_probability(test[0]))
+print 'off: ' + str(nltk_tools.english_unigram_probability(test[1]))
