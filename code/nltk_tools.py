@@ -56,15 +56,22 @@ class NltkTools:
       model = pickle.load(model_file)
       model_file.close()
     else:
+      model_file = open(filename, 'wb')
+      model = collections.defaultdict(_dd)
+      model['SIZE'] = len(nltk.corpus.brown.words())
       if ngram == 1:
-        model_file = open(filename, 'wb')
-        model = collections.defaultdict(_dd)
         for word in nltk.corpus.brown.words():
           model[word.lower()] += 1
-        pickle.dump(model, model_file, -1)
-        model_file.close()
-      #else: 
-        #model = nltk.model.ngram.NgramModel(ngram, nltk.corpus.brown.words())
+      if ngram == 2:
+        word1 = None
+        for word in nltk.corpus.brown.words():
+          word2 = word
+          if word1:
+            bigram = (word1.lower(), word2.lower())
+            model[bigram] += 1
+          word1 = word2
+      pickle.dump(model, model_file, -1)
+      model_file.close()
     return model
     
   # Returns a stemmed version of the input Spanish word
@@ -84,14 +91,19 @@ class NltkTools:
     return self.es_bigram_tagger.tag(sentence)
     
   # Given a unigram, return the probability of that
-  # unigram occuring in the Brown corpus
+  # unigram occuring in the Brown corpus (Laplace)
   def english_unigram_probability(self, unigram):
-    return math.log(float(self.en_unigram_model[unigram.lower()])/len(nltk.corpus.brown.words()))
+    num = self.en_unigram_model[unigram.lower()] + 1.0
+    den = self.en_unigram_model['SIZE'] + len(self.en_unigram_model)
+    return math.log(num/den)
   
-  # Given a bigram, return the probability of that
-  # bigram occuring in the Brown corpus
+  # Given a bigram (in list format), return the probability of
+  # that bigram occuring in the Brown corpus (Laplace smoothed)
   def english_bigram_probability(self, bigram):
-    return self.en_bigram_model.logprob(bigram[0], [bigram[1]])
+    bigram_tuple = (bigram[0].lower(), bigram[1].lower())
+    num = self.en_bigram_model[bigram_tuple]+1.0
+    den = self.en_bigram_model['SIZE'] + len(self.en_bigram_model)
+    return math.log(num/den)
 
   ###############################################################
   # Everything below this line is not yet finished. DO NOT USE! #
@@ -114,7 +126,9 @@ class NltkTools:
 def _dd():
   return 0
 
+########################################################
 ##### TEST CODE - Please feel free to ignore this. #####
+########################################################
 
 # test_dictionary = {"tener":["to have", "to be"], 
 #                    "hola":["hello"], 
@@ -126,7 +140,10 @@ def _dd():
 # test_sentence = "Hola, me llamo Harley y tengo dos perros."
 # test_translation = "Hello, my name is Harley and I have two dogs."
                    
-nltk_tools = NltkTools()
-test = ['of', 'off']
-print 'of: ' + str(nltk_tools.english_unigram_probability(test[0]))
-print 'off: ' + str(nltk_tools.english_unigram_probability(test[1]))
+# nltk_tools = NltkTools()
+# test = ['of', 'off']
+# test_bigrams = [['of', 'the'], ['fat', 'cat']]
+# print 'of: ' + str(nltk_tools.english_unigram_probability(test[0]))
+# print 'off: ' + str(nltk_tools.english_unigram_probability(test[1]))
+# print 'of the: ' + str(nltk_tools.english_bigram_probability(test_bigrams[0]))
+# print 'fat cat: ' + str(nltk_tools.english_bigram_probability(test_bigrams[1]))
