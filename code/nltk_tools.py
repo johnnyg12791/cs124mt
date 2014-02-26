@@ -11,9 +11,10 @@ A wrapper class provided useful implementations of several NLTK tools.
 Current tools include:
 - Spanish-language word stemmer => stem_spanish_word(word)
 - Spanish-language unigram POS tagger => spanish_unigram_pos_tag(sentence)
-- Spanish-language bigram POS tagger => spanish_bigram_pos_tag(sentence)
-- English-language (not yet implemented)
+- English-language unigram language model => english_unigram_probability(unigram)
+- English-language bigram language model => english_bigram_probability(bigram)
 - Sentence/word normalizer (not yet implemented)
+- Spanish language bigram POS tagger (not yet implemented)
 
 '''
 class NltkTools:
@@ -84,12 +85,6 @@ class NltkTools:
     sentence = self.split_and_normalize_sentence(sentence)
     return self.es_unigram_tagger.tag(sentence)
     
-  # Given a sentence to translate, this returns the POS
-  # for each word based on a bigram language model
-  def spanish_bigram_pos_tag(self, sentence):
-    sentence = self.split_and_normalize_sentence(sentence)
-    return self.es_bigram_tagger.tag(sentence)
-    
   # Given a unigram, return the probability of that
   # unigram occuring in the Brown corpus (Laplace)
   def english_unigram_probability(self, unigram):
@@ -120,6 +115,12 @@ class NltkTools:
       if self.normalize_word(word) != '':
         result.append(self.normalize_word(word))
     return result
+    
+  # Given a sentence to translate, this returns the POS
+  # for each word based on a bigram language model
+  def spanish_bigram_pos_tag(self, sentence):
+    sentence = self.split_and_normalize_sentence(sentence)
+    return self.es_bigram_tagger.tag(sentence)
   
 # A helper function that avoids a lambda function being 
 # pickled in the defaultdict

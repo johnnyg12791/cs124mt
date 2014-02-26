@@ -1,21 +1,32 @@
 import sys
-DEV_SET = "../corpus/dev_set.txt"
-TEST_SET = "../corpus/test_set.txt"
-DEV_SET_NO_ACCENTS = "../corpus/dev_set_unaccented.txt"
+import os
+import nltk_tools
+
+DEV_SET = os.path.dirname(os.path.abspath(__file__)) + '/../corpus/dev_set.txt'
+TEST_SET = os.path.dirname(os.path.abspath(__file__)) + '/../corpus/test_set.txt'
+DEV_SET_NO_ACCENTS = os.path.dirname(os.path.abspath(__file__)) + '/../corpus/dev_set_unaccented.txt'
 
 def main(args):
-  print "You are translating from english to spanish"
+  nltk = nltk_tools.NltkTools()
+  print "We are translating from Spanish to English."
   with open(DEV_SET) as f:
     content = f.readlines()
     for line in content:
       print "Spanish: ", line
-      translation = translate(line)
+      translation = translate(nltk, line)
       print "English: ", translation
+      break
 
 
-def translate(sentence):
-  translated_sentence = ["" for word in sentence.split()]
-
+def translate(nltk, sentence):
+  
+  words = sentence.split()
+  translated_sentence = ["" for i in range(len(words))]
+  
+  pos_words = nltk.spanish_unigram_pos_tag(sentence)
+  for word in pos_words:
+    print word
+    
   #go word by word
   #tag each POS
 
@@ -34,10 +45,10 @@ def translate(sentence):
     #if the next word is not el, and is a ?adjective?
       #replace 'es' with 'it is'
 
-  for word_index in range(len(sentence)-1):
-    cur_word = sentence[word_index]
-    next_word = sentence[word_index+1]
-    if(cur_word == "es" and next_word == "el"):
+  #for word_index in range(len(sentence)-1):
+    #cur_word = sentence[word_index]
+    #next_word = sentence[word_index+1]
+    #if(cur_word == "es" and next_word == "el"):
       #is the
 
   #stem changing verbs
@@ -51,11 +62,11 @@ def translate(sentence):
 
 
   #if the word ends in "ando" or "iendo", replace it with "ar" or "ir/er"
-  for word in sentence:
-    if word[-4:] == 'ando':
+  #for word in sentence:
+    #if word[-4:] == 'ando':
       #check if word[:-4] + ar in dict
         #conjugate + add ing
-    if word[-5:] == 'iendo':
+    #if word[-5:] == 'iendo':
       #check if word[:-5] + ir in dict
       #check if word[:-5] + er in dict
         #conjugate + add ing
