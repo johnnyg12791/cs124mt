@@ -24,11 +24,12 @@ def translate(nltk, sentence):
   
   words = sentence.split()
   translated_sentence = ["" for i in range(len(words))]
-  
   pos_words = nltk.spanish_unigram_pos_tag(sentence)
-  for word in pos_words:
+  
+  for word_tuple in pos_words:
+    word, pos = word_tuple
     print word
-    
+    print pos
   #go word by word
   #tag each POS
 
@@ -61,39 +62,42 @@ def translate(nltk, sentence):
 
   #need to convert verb endings to infinitive, while remembering conjugation
   #then find english translation, and conjugate it in english
-  for word in words:
-    ing_ending = check_for_ing(word, dictionary)
+  #for word in words:
+    #ing_ending = check_for_ing(word, dictionary)
 
 
 
 #unigram
 def get_most_likely_definition(spanish_word, dictionary):
-  possible_translations = dictionary[spanish_word]
-  for word in possible_translations:
-    #
-    #
-    #
-  return best_word
+  pass
+  #possible_translations = dictionary[spanish_word]
+  #for word in possible_translations:
+    
+  #return best_word
 
 
 
 
 #return "" if the word isn't -ando, -iendo, english word if it is
 def check_for_ing(word, dictionary):
+  pass
   #if the word ends in "ando" or "iendo", replace it with "ar" or "ir/er"
-  if word[-4:] == 'ando':
-    new_word = word[:-4] + 'ar'
-    definition = get_most_likely_definition(word, dictionary)
+  #if word[-4:] == 'ando':
+    #new_word = word[:-4] + 'ar'
+    #definition = get_most_likely_definition(word, dictionary)
     #check if word[:-4] + ar in dict
       #conjugate + add ing
-  elif word[-5:] == 'iendo':
+  #elif word[-5:] == 'iendo':
     #check if word[:-5] + ir in dict
     #check if word[:-5] + er in dict
       #conjugate + add ing
-  else
-    return ""
+  #else
+    #return ""
       
-
+# A helper function that avoids a lambda function being 
+# pickled in the defaultdict (used in loading models)
+def _dd():
+  return 0
 
 if __name__ == '__main__':
     args = sys.argv[1:]
