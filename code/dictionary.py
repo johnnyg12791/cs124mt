@@ -8,7 +8,6 @@ def main():
   filename = corpus_dir + "/dict.txt"
   print create_dictionary(filename, stemmer)
 
-
 '''
 given a file of the form:
 spanish_word: englishWord1, englishWord2...
