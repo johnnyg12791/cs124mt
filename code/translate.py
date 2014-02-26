@@ -35,9 +35,9 @@ def translate(nltk, sentence):
   
   #go word by word
   #tag each POS
-  for word_tuple in pos_words:
-    word, pos = word_tuple
-    if pos == 'V':
+  #for word_tuple in pos_words:
+    #word, pos = word_tuple
+    #if pos == 'V':
       # "estan => they are"
       # do conjugation stuff
 
@@ -78,8 +78,22 @@ def translate(nltk, sentence):
 # model definition
 # TONIGHT: implement unigram
 # NEXT: implement stupid backoff from bigram to unigram (if possible)
-def get_most_likely_definition(spanish_word, dictionary):
-  pass
+def get_most_likely_definition(nltk, spanish_word, dictionary):
+  meanings = dictionary[spanish_word]
+  first_word = meanings[0]
+  
+  max_score = nltk.english_unigram_probability(first_word)
+  best_meaning = first_word
+  
+  for meaning in meanings[1:]:
+    score = nltk.english_unigram_probability(meaning)
+    if score > max_score:
+      max_score = score
+      best_meaning = meaning
+  return best_meaning
+
+  #pass
+
   #lookup all possible translations in dictionary 
   #possible_translations = dictionary[spanish_word]
   #for word in possible_translations:
@@ -91,11 +105,13 @@ def get_most_likely_definition(spanish_word, dictionary):
 
 #return "" if the word isn't -ando, -iendo, english word if it is
 def check_for_ing(word, dictionary):
-  pass
+  #pass
+  nltk = NltkTools()
   #if the word ends in "ando" or "iendo", replace it with "ar" or "ir/er"
-  #if word[-4:] == 'ando':
-    #new_word = word[:-4] + 'ar'
-    #definition = get_most_likely_definition(word, dictionary)
+  if word[-4:] == 'ando':
+    new_word = word[:-4] + 'ar'
+    definition = get_most_likely_definition(new_word, dictionary)
+    
     #check if word[:-4] + ar in dict
       #conjugate + add ing
   #elif word[-5:] == 'iendo':

@@ -4,6 +4,8 @@ from nltk_tools import NltkTools
 import string
 import re
 import os
+import translate
+import difflib
 
 def main():
 	nltk_tools = NltkTools()
@@ -29,26 +31,32 @@ def unigram_sentences(nltk, dictionary, sentence):
   splitter = re.compile(r'(\s+|\S+)')
   words = splitter.findall(sentence)
   result = ""
+
+
   for word in words:
-    punc = ""
-    if (word[len(word) - 1] in string.punctuation):
-      punc = word[len(word) - 1]
-      word = word[:-1]
+  #  if not word.isspace():
+  #   print word
 
-    stemmed_word = nltk.stem_spanish_word(word.decode('quopri').decode('utf-8'))
-    if stemmed_word not in dictionary:
-      result += word + punc
+    if word.isspace():
+      result += word
     else:
-      meanings = dictionary[stemmed_word]
-      max_score = 0.0
-      best_meaning = ""
-      for meaning in meanings:
-      	score = nltk.english_unigram_probability(meaning)
-      	if score > max_score:
-      		max_score = score
-      		best_meaning = meaning
+      punc = ""
+      if (word[len(word) - 1] in string.punctuation):
+        punc = word[len(word) - 1]
+        word = word[:-1]
 
-      result += best_meaning + punc
+      stemmed_word = nltk.stem_spanish_word(word.decode('quopri').decode('utf-8'))
+
+      if stemmed_word not in dictionary:
+        #print stemmed_word
+        matches = difflib.get_close_matches(stemmed_word, dictionary.keys())
+        if len(matches) != 0:
+          result += translate.get_most_likely_definition(nltk, matches[0], dictionary) + punc
+        else:
+          result += word + punc
+      else:
+        result += translate.get_most_likely_definition(nltk, stemmed_word, dictionary) + punc
+  
   return result
 
 '''
@@ -86,6 +94,11 @@ def get_best_unigram_word(nltk, meanings):
 			max_score = score
 			best_meaning = meaning
 	return best_meaning
+
+# A helper function that avoids a lambda function being 
+# pickled in the defaultdict
+def _dd():
+  return 0
 
 
 main()

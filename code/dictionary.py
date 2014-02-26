@@ -28,6 +28,7 @@ def create_dictionary(filename, stemmer):
       for translation in split[1].split(','):
         translation_list.append(translation.strip())
       dictionary[stemmer.stem_spanish_word(split[0].decode('quopri').decode('utf-8'))] = translation_list
+
   return dictionary
 
 
