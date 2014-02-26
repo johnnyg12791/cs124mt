@@ -1,19 +1,21 @@
 import sys
+from dictionary import *
 DEV_SET = "../corpus/dev_set.txt"
 TEST_SET = "../corpus/test_set.txt"
 DEV_SET_NO_ACCENTS = "../corpus/dev_set_unaccented.txt"
 
 def main(args):
+  dictionary = get_dictionary()
   print "You are translating from english to spanish"
   with open(DEV_SET) as f:
     content = f.readlines()
     for line in content:
       print "Spanish: ", line
-      translation = translate(line)
+      translation = translate(line, dictionary)
       print "English: ", translation
 
 
-def translate(sentence):
+def translate(sentence, dictionary):
   translated_sentence = ["" for word in sentence.split()]
 
   #go word by word
@@ -48,19 +50,40 @@ def translate(sentence):
 
   #need to convert verb endings to infinitive, while remembering conjugation
   #then find english translation, and conjugate it in english
+  for word in words:
+    ing_ending = check_for_ing(word, dictionary)
 
 
+
+
+
+#unigram
+def get_most_likely_definition(spanish_word, dictionary):
+  possible_translations = dictionary[spanish_word]
+  for word in possible_translations:
+    #
+    #
+    #
+  return best_word
+
+
+
+
+#return "" if the word isn't -ando, -iendo, english word if it is
+def check_for_ing(word, dictionary):
   #if the word ends in "ando" or "iendo", replace it with "ar" or "ir/er"
-  for word in sentence:
-    if word[-4:] == 'ando':
-      #check if word[:-4] + ar in dict
-        #conjugate + add ing
-    if word[-5:] == 'iendo':
-      #check if word[:-5] + ir in dict
-      #check if word[:-5] + er in dict
-        #conjugate + add ing
-        
-
+  if word[-4:] == 'ando':
+    new_word = word[:-4] + 'ar'
+    definition = get_most_likely_definition(word, dictionary)
+    #check if word[:-4] + ar in dict
+      #conjugate + add ing
+  elif word[-5:] == 'iendo':
+    #check if word[:-5] + ir in dict
+    #check if word[:-5] + er in dict
+      #conjugate + add ing
+  else
+    return ""
+      
 
 
 if __name__ == '__main__':
