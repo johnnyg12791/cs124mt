@@ -170,7 +170,7 @@ lunes: Monday
 lider: leader
 maduro: mature, ripe
 mantequilla: butter
-marchar: to march, to go, to go away, to walk, to move, to travel
+marchar: to march, to go away, to walk, to move, to travel
 Maritornes: Maritornes
 manana: morning, tomorrow
 mejor: best, better
