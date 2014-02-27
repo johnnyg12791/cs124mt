@@ -3,6 +3,7 @@ import os
 import nltk_tools
 from dictionary import *
 import difflib
+import unicodedata
 
 DEV_SET = os.path.dirname(os.path.abspath(__file__)) + '/../corpus/dev_set.txt'
 TEST_SET = os.path.dirname(os.path.abspath(__file__)) + '/../corpus/test_set.txt'
@@ -23,40 +24,45 @@ def main(args):
 
 def translate(dictionary, nltk, sentence):
   
+  # Initialize
   words = sentence.split()
   translated_sentence = ["" for i in range(len(words))]
+  
+  # These are our rules
+  
+  # 1 - POS tagging
   pos_words = nltk.spanish_unigram_pos_tag(sentence) 
   
+  # 2 - check for present progressive (ex. running)
   for index, word in enumerate(words):
     (punctuation, word) = get_punctuation(word)
     translated_sentence[index] = check_for_ing(word, dictionary, nltk) + punctuation
 
-  #these are our rules
+  # 3 -loop though and replace ue with o, then add it to translated_sentences[index]
+  
+  # 4 - switch (noun adj) -> (adj noun)
+  index = 0
+  for w1, w2 in zip(pos_words, pos_words[1:]):
+    if w1[1] == 'N' and w2[1] == 'A' and translated_sentence[i] == "":
+      d1 = get_unigram_word(w1[0], dictionary, nltk)
+      d2 = get_unigram_word(w2[0], dictionary, nltk)
+      translated_sentence[index] = d2
+      translated_sentence[index+1] = d1
+    index += 1
 
-  #loop though and replace ue with o, then add it to translated_sentences[index]
-  for index, word in enumerate(words):
-    if(translated_sentence[index] == ""):
+  # 5 - verb conjugation??
 
-    (punctuation, word) = get_punctuation(word)
-    if word.pos = noun and words[index + 1] == adjective:
-      translate adjective
-      translate noun
-      translated_sentence[index] = noun
-      translated_sentence[index+1] = adjective
+  # other stuff here (pluralise?)
 
-  #other stuff here
-
-  #verb conjugation??
-
-  #
+  # 6 - translate remaining words directly using unigram LM
   for index, word in enumerate(words):
     if(translated_sentence[index] == ""):
       (punctuation, word) = get_punctuation(word)
       translated_sentence[index] = get_unigram_word(word, dictionary, nltk) + punctuation
 
   english_sentence = " ".join(translated_sentence)
-  #post-processing (ie, alignment, grammar corrections)
-
+  
+  # post-processing (ie, alignment, grammar corrections)
 
   return english_sentence
 
@@ -84,6 +90,7 @@ def get_punctuation(word):
 
 
 def get_most_likely_definition(word, dictionary, nltk):
+  # maybe modify this to use bigrams...
   #stemmed_word = nltk.stem_spanish_word(word.decode('quopri').decode('utf-8'))
   meanings = dictionary[word]
   first_word = meanings[0]
@@ -120,7 +127,11 @@ def check_for_ing(word, dictionary, nltk):
       return definition
   else:
     return ""
-
+    
+# not working...
+def convert_string(input):
+  unicodedata.normalize('NFKD', unicode(input, 'ISO-8859-1')).encode('ASCII', 'ignore')
+    
 # A helper function that avoids a lambda function being 
 # pickled in the defaultdict (used in loading models)
 def _dd():

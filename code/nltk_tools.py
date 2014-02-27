@@ -141,10 +141,10 @@ def _dd():
 # test_sentence = "Hola, me llamo Harley y tengo dos perros."
 # test_translation = "Hello, my name is Harley and I have two dogs."
                    
-# nltk_tools = NltkTools()
-# test = ['of', 'off']
+#nltk_tools = NltkTools()
+#test = ['he', 'the']
 # test_bigrams = [['of', 'the'], ['fat', 'cat']]
-# print 'of: ' + str(nltk_tools.english_unigram_probability(test[0]))
-# print 'off: ' + str(nltk_tools.english_unigram_probability(test[1]))
+#print 'he: ' + str(nltk_tools.english_unigram_probability(test[0]))
+#print 'the: ' + str(nltk_tools.english_unigram_probability(test[1]))
 # print 'of the: ' + str(nltk_tools.english_bigram_probability(test_bigrams[0]))
 # print 'fat cat: ' + str(nltk_tools.english_bigram_probability(test_bigrams[1]))
