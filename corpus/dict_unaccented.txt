@@ -9,7 +9,7 @@ al: to the, at the
 algunos: some, few, a few
 anoto: write down, annotate, jot down, log, book
 anteriores: previous, former, prior, past, front, fore, anterior 
-apoyar: support, sustain, back, rest, uphold, lean, favor, cheer, back up
+apoyar: support, sustain, rest, uphold, lean, favor, cheer, back up
 Arauca: Arauca
 armas: arms, weapons, armaments, hardware
 asegura: ensure, assure, secure, insure, anchor, assert, faster, fix
@@ -117,11 +117,11 @@ fuera: outside, away
 fueron: they went, they were
 gama: range
 gente: people, folk, town, dweller
-Globovision: Globovision
+globovision: Globovision
 gobierno: government
 gritos: shouts, cries, screams
-Gustavo: Gustavo
-Guzman: Guzman
+gustavo: Gustavo
+guzman: Guzman
 haber: to have
 hacer: to do, to make
 hacienda: ranch, estate
@@ -191,7 +191,7 @@ mucho: much, lot, a lot, a lot of, a great deal, very, plenty, lots of, plenty o
 mundo: world
 mas: more, most, other, plus, else
 Mexico: Mexico
-nadie: no one, nobody, anyone, anybody, none
+nadie: no one, nobody
 narcotrafico: drug
 Neymar: Neymar
 Nicolas: Nicholas

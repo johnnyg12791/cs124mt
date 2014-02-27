@@ -7,7 +7,7 @@ class SpanEngDictionary:
   def __init__(self):
     stemmer = NltkTools()
     corpus_dir = os.path.dirname(os.path.abspath(__file__)) + '/../corpus'
-    filename = corpus_dir + "/dict.txt"
+    filename = corpus_dir + "/dict_unaccented.txt"
 
     self.dictionary = create_dictionary(filename, stemmer)
     self.unstemmed_dictionary = create_dictionary(filename, None)
