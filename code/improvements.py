@@ -10,12 +10,10 @@ import difflib
 def main():
   nltk_tools = NltkTools()
   corpus_dir = os.path.dirname(os.path.abspath(__file__)) + '/../corpus'
-  dictionary_filename = corpus_dir + "/dict.txt"
   dev_filename = corpus_dir + "/dev_set.txt"
 
   SpanEngDict = SpanEngDictionary()
   dictionary = SpanEngDict.dictionary
-  #dictionary = create_dictionary(dictionary_filename, nltk_tools)
   
   with open(dev_filename) as f:
     content = f.readlines()

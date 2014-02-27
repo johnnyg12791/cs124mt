@@ -122,11 +122,10 @@ gobierno: government
 gritos: shouts, cries, screams
 Gustavo: Gustavo
 Guzman: Guzman
-ha: ah
 haber: to have
 hacer: to do, to make
-Hacienda: ranch, estate
-Hasta: As far as, Up to, Until
+hacienda: ranch, estate
+hasta: as far as, up to, until
 hecho: done, fact
 Henrique: Henrique
 heridos: wounded, injured
