@@ -300,18 +300,22 @@ def check_for_ing(word, dictionary):
   #pass
   nltk = NltkTools()
   #if the word ends in "ando" or "iendo", replace it with "ar" or "ir/er"
-  if word[-4:] == 'ando':
+  if(word[-4:] == 'ando'):
     new_word = word[:-4] + 'ar'
     definition = get_most_likely_definition(new_word, dictionary)
-    
-    #check if word[:-4] + ar in dict
-      #conjugate + add ing
-  #elif word[-5:] == 'iendo':
-    #check if word[:-5] + ir in dict
-    #check if word[:-5] + er in dict
-      #conjugate + add ing
-  #else
-    #return ""
+    if(definition[:3] == 'to '):
+      return definition[:3] + 'ing'
+    else:
+      return definition
+  elif(word[-5:] == 'iendo'):
+    er_new_word = word[:-5] + 'er'
+    definition = get_most_likely_definition(new_word, dictionary)
+    if(definition[:3] == 'to '):
+      return definition[:3] + 'ing'
+    else:
+      return definition
+  else:
+    return ""
 
 # A helper function that avoids a lambda function being 
 # pickled in the defaultdict (used in loading models)
