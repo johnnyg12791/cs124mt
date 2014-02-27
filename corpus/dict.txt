@@ -7,7 +7,7 @@ ahora: now, presently
 Aida: Aida
 al: to the, at the
 algunos: some, few, a few
-anotó: write down, annotate, jot down, log, book
+anotar: to write down, to annotate, to jot down, to log, to book
 anteriores: previous, former, prior, past, front, fore, anterior 
 apoyar: support, sustain, back, rest, uphold, lean, favor, cheer, back up
 Arauca: Arauca
@@ -89,8 +89,7 @@ domingo: sunday, sabbath
 don: Mr., gift
 día: day, daytime
 efecto: effect, aim, purpose, impression, bill
-el: the
-El: the, he
+el: the, he, it
 elección: choice, election
 ello: it
 ellos: they
@@ -123,7 +122,7 @@ Gobierno: Government
 gritos: shouts, cries, screams
 Gustavo: Gustavo
 Guzmán: Guzmán
-ha: ah
+ha: has
 haber: to have
 hacer: to do, to make
 Hacienda: ranch, estate
@@ -157,7 +156,6 @@ jurídico: legal
 kilómetro: kilometer
 kilómetros: kilometers
 la: the
-La: The
 larga: long, length
 largo: long, length
 las: the
@@ -314,5 +312,3 @@ voz: voice, word, vocals
 y: and
 ya: already, anymore, by now
 zona: area, zone, region, district
-Él: he, it
-él: he, it
