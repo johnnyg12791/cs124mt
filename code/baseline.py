@@ -9,7 +9,7 @@ def main():
   nltk_tools = NltkTools()
   corpus_dir = os.path.dirname(os.path.abspath(__file__)) + '/../corpus'
   dictionary_filename = corpus_dir + "/dict.txt"
-  dev_filename = corpus_dir + "/test_set.txt"
+  dev_filename = corpus_dir + "/dev_set.txt"
 
   SpanEngDict = SpanEngDictionary()
   #print SpanEngDict.unstemmed_dictionary
