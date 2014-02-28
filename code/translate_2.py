@@ -18,10 +18,11 @@ def main(args):
   dictionary = SpanEngDict.dictionary
 
   print "We are translating from Spanish to English."
-  with open(DEV_SET) as f:
+  print "----Translated----"
+  with open(TEST_SET) as f:
     content = f.readlines()
     for line in content:
-      print "English: ", translate(dictionary, nltk, line)
+      print translate(dictionary, nltk, line)
       raw_input("")
 
 def translate(dictionary, nltk, sentence):
@@ -31,25 +32,35 @@ def translate(dictionary, nltk, sentence):
   translated_sentence = ["" for i in range(len(words))]
   
   # These are our rules
+
+  # 0 - Taking out numbers
+  for index, word in enumerate(words):
+    if(word[-1].isdigit()):
+      translated_sentence[index] = word
   
   # 1 - POS tagging (not technically doing anything)
   pos_words = nltk.spanish_unigram_pos_tag(sentence) 
   #Bug here now (meanings = dictionary[stemmed_word], KeyError: u'a\xf1os')
-  #pos_words = update_word_pos_tags(pos_words, dictionary, nltk)
+  pos_words = update_word_pos_tags(pos_words, dictionary, nltk)
   
   # 2 - check for present progressive (ex. running)
-  for index, word in enumerate(words):
+  for index, word_tuple in enumerate(pos_words):
     if(translated_sentence[index] == ""):
-      (punctuation, word) = get_punctuation(word)
-      translated_sentence[index] = check_for_ing(word, dictionary, nltk) + punctuation
+      word, pos = word_tuple
+      punctuation = get_punctuation(words[index])
+      possible_word = check_for_ing(word, dictionary, nltk)
+      if(len(possible_word) > 0):
+        translated_sentence[index] = check_for_ing(word, dictionary, nltk) + punctuation
 
   # 3 -loop though and replace ue with o, then add it to translated_sentences[index]
   for index, word_tuple in enumerate(pos_words):
     if(translated_sentence[index] == ""):
       word, pos = word_tuple
-      (punctuation, word) = get_punctuation(word)
+      punctuation = get_punctuation(words[index])
       if(pos == 'V'):
-        translated_sentence[index] = check_for_stem_changing(word, dictionary, nltk) + punctuation
+        possible_word = check_for_stem_changing(word, dictionary, nltk)
+        if(len(possible_word) > 0):
+          translated_sentence[index] = check_for_stem_changing(word, dictionary, nltk) + punctuation
 
 
   # 4 - switch (noun adj) -> (adj noun)
@@ -66,29 +77,34 @@ def translate(dictionary, nltk, sentence):
   for index, word_tuple in enumerate(pos_words):
     if(translated_sentence[index] == ""):
       word, pos = word_tuple
-      (punctuation, word) = get_punctuation(word)
+      punctuation= get_punctuation(words[index])
       if(pos == 'V'):
-        translated_sentence[index] = conjugate_word(word, dictionary, nltk) + punctuation
+        possible_word = conjugate_word(word, dictionary, nltk)
+        if(len(possible_word) > 0):
+          translated_sentence[index] = conjugate_word(word, dictionary, nltk) + punctuation
 
 
   # 6 - pluralize words
   for index, word_tuple in enumerate(pos_words):
     if(translated_sentence[index] == ""):
       word, pos = word_tuple
-      (punctuation, word) = get_punctuation(word)
+      punctuation = get_punctuation(words[index])
       if(pos == 'N'):
-        translated_sentence[index] = check_for_plural_word(word, dictionary, nltk) + punctuation
+        possible_word = check_for_plural_word(word, dictionary, nltk)
+        if(len(possible_word) > 0):
+          translated_sentence[index] = possible_word + punctuation
 
   # 7 - translate remaining words directly using unigram LM
-  for index, word in enumerate(words):
+  for index, word_tuple in enumerate(pos_words):
     if(translated_sentence[index] == ""):
-      (punctuation, word) = get_punctuation(word)
+      word, pos = word_tuple
+      punctuation = get_punctuation(words[index])
       translated_sentence[index] = get_unigram_word(word, dictionary, nltk) + punctuation
 
+  translated_sentence[0] = translated_sentence[0].capitalize()
   english_sentence = " ".join(translated_sentence)
   
   # post-processing (ie, alignment, grammar corrections)
-
 
 
   return english_sentence
@@ -152,14 +168,20 @@ def conjugate_word(word, dictionary, nltk):
   # I
   elif stemmed_word + "aba" == word:
     if meaning[:3] == "to ":
-      verb_trans = meaning[3:] + "ed"
+      if meaning[-1] == "e":
+        verb_trans = meaning[3:] + "d"
+      else:
+        verb_trans = meaning[3:] + "ed"
     else:
       verb_trans = meaning
   # You
 
   elif stemmed_word + "abas" == word:
     if meaning[:3] == "to ":
-      verb_trans = meaning[3:] + "ed"
+      if meaning[-1] == "e":
+        verb_trans = meaning[3:] + "d"
+      else:
+        verb_trans = meaning[3:] + "ed"
     else:
       verb_trans = meaning
 
@@ -170,7 +192,10 @@ def conjugate_word(word, dictionary, nltk):
   # They
   elif stemmed_word + "aban" == word:
     if meaning[:3] == "to ":
-      verb_trans = meaning[3:] + "ed"
+      if meaning[-1] == "e":
+        verb_trans = meaning[3:] + "d"
+      else:
+        verb_trans = meaning[3:] + "ed"
     else:
       verb_trans = meaning
 
@@ -209,7 +234,7 @@ def conjugate_word(word, dictionary, nltk):
 def update_word_pos_tags(pos_words, dictionary, nltk):
   for i, word_tuple in enumerate(pos_words):
     word, pos = word_tuple
-    if pos == None:
+    if pos == None and not word[-1].isdigit():
       stemmed_word = nltk.stem_spanish_word(word)
       if stemmed_word not in dictionary:
         matches = difflib.get_close_matches(stemmed_word, dictionary.keys())
@@ -223,10 +248,10 @@ def update_word_pos_tags(pos_words, dictionary, nltk):
       if len(tokens) > 1 and tokens[0] == "to":
         pos_words[i] = (word, "V")
   #now we also go through the nouns and update thouse
-  #for i, word_tuple in enumerate(pos_words):
-  #  word, pos = word_tuple
-  #  if pos == None:
-  #    pos_words[i] = (word, "N")
+  for i, word_tuple in enumerate(pos_words):
+    word, pos = word_tuple
+    if pos == None:
+      pos_words[i] = (word, "N")
   return pos_words
 
 
@@ -246,7 +271,7 @@ def check_for_stem_changing(word, dictionary, nltk):
 
 #given a stemmed word, it finds the best
 def get_unigram_word(word, dictionary, nltk):
-  stemmed_word = nltk.stem_spanish_word(word.decode('quopri').decode('utf-8'))
+  stemmed_word = nltk.stem_spanish_word(word)
   if stemmed_word not in dictionary:
     matches = difflib.get_close_matches(stemmed_word, dictionary.keys())
     if len(matches) != 0:
@@ -261,9 +286,9 @@ def get_unigram_word(word, dictionary, nltk):
 def get_punctuation(word):
   punctuation = ""
   if (word[len(word) - 1] in string.punctuation):
-    punc = word[len(word) - 1]
+    punctuation = word[len(word) - 1]
     word = word[:-1]
-  return (punctuation, word)
+  return punctuation
 
 
 

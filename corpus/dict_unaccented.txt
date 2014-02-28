@@ -8,6 +8,8 @@ Aida: Aida
 al: to the, at the
 algunos: some, few, a few
 anoto: write down, annotate, jot down, log, book
+ano: year
+anos: years
 anteriores: previous, former, prior, past, front, fore, anterior 
 apoyar: support, sustain, rest, uphold, lean, favor, cheer, back up
 Arauca: Arauca
@@ -83,6 +85,7 @@ despavorido: terrified
 despertar: to wake up, to arouse, to revive
 despues: after, later, next, afterward
 diez: ten
+dio: gave
 directo: direct, straight
 doce: twelve
 domingo: sunday, sabbath
