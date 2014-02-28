@@ -19,7 +19,7 @@ def main(args):
 
   print "We are translating from Spanish to English."
   print "----Translated----"
-  with open(TEST_SET) as f:
+  with open(DEV_SET) as f:
     content = f.readlines()
     for line in content:
       print translate(dictionary, nltk, line)
@@ -67,6 +67,7 @@ def translate(dictionary, nltk, sentence):
   index = 0
   for w1, w2 in zip(pos_words, pos_words[1:]):
     if w1[1] == 'N' and w2[1] == 'A' and translated_sentence[i] == "":
+      print "noun-adj swap: ", w1[0], w2[0]
       d1 = get_unigram_word(w1[0], dictionary, nltk)
       d2 = get_unigram_word(w2[0], dictionary, nltk)
       translated_sentence[index] = d2
@@ -115,8 +116,10 @@ def check_for_plural_word(word, dictionary, nltk):
     definition = get_unigram_word(word, dictionary, nltk)
     if(definition[-1] != "s"):
       if(definition[-1] == "y"):
+        #print word
         return definition[:-1] + "ies"
       else:
+        #print word
         return definition + "s"
     else:
       return definition
